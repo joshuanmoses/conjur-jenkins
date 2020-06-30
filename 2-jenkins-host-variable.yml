@@ -1,0 +1,25 @@
+---
+
+- !policy
+  id: jenkins
+  body:
+  - !layer
+  - !host
+  - !grant
+    role: !layer
+    member: !hosts
+
+- !variable
+  id: jenkins/svcjenkins
+  kind: password
+  annotations:
+    Application: jenkins
+    Description: username
+    
+- !permit
+  resource: !variable jenkins/svcjenkins
+  privileges: [read, execute]
+  roles: 
+    - !layer /dev
+
+...
