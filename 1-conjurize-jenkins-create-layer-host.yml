@@ -1,0 +1,20 @@
+---
+
+#Create policy dev/srv/jenkins
+- !policy
+  id: jenkins
+  annotations:
+    Description: Jenkins Hosts
+  body:
+  #Create layer dev/srv/jenkins
+  - !layer
+  #Create Jenkins Hosts
+  - &hosts
+    - !host
+      id: jenkins-01
+  #Add hosts to layer
+  - !grant
+    role: !layer
+    member: *hosts
+
+...
