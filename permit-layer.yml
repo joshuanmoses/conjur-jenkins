@@ -1,5 +1,5 @@
 ---
-- !layer jenkins
+- !layer jenkins/jenkins
 - !host jenkins/jenkins-01
 - !grant
   role: !layer jenkins/jenkins
