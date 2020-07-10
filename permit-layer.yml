@@ -1,0 +1,12 @@
+---
+- !variable password
+- !layer servers
+- !host jenkins/jenkins01
+- !grant
+  role: !layer servers
+  member: !host jenkins/jenkins01
+- !permit
+  role: !layer servers
+  privileges: [ read, execute ]
+  resource: !variable password
+...
