@@ -1,4 +1,4 @@
-	
+---	
 - &variables
   - !variable
     id: db-password
@@ -7,3 +7,4 @@
   - !variable
     id: db-username
     kind: username
+...
