@@ -1,0 +1,22 @@
+---
+- !policy
+  id: jenkins/jenkins-app
+  
+#Declare the secrets required by the application- &variables
+  - !variable db_password
+  - !variable db_password2
+
+# Define a group and assign privileges for fetching the secrets- !group secrets-users
+
+- !permit
+  resource: *variables
+  privileges: [ read, execute ]
+  roles: !group secrets-users
+
+# Entitlements that add the Jenkins layer of hosts to the group  
+
+- !grant
+  role: !group secrets-users
+  member: !layer /jenkins-01
+  
+  ...
