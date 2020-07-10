@@ -10,7 +10,7 @@
   id: jenkins01
   annotations:
     Role: Jenkins Server
-    Hostname: jenkins01.cyber-ark-demo.local
+    Hostname: jenkins01.myorg.local
 
 # LAYER: Create Jenkins Server LAYER: dev/srv/jenkins
 - !layer 
