@@ -1,10 +1,11 @@
----	
-- &variables
-  - !variable
-    id: db-password
-    kind: password
-
-  - !variable
-    id: db-username
-    kind: username
-...
+---
+- !policy
+  id: jenkins
+  body:
+    - !policy
+      id: jenkins
+      body:
+        # Secret Declarations
+        - &secrets
+          - !variable db_username
+          - !variable db_password
