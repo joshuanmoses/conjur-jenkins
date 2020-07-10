@@ -1,8 +1,12 @@
 ---
 
-#Create add layer dev and user group dev to allow layer to access secrets that group has access to
-- !grant
+- !permit
   role: !host jenkins/jenkins-01
-  member: !layer /jenkins
+  privileges: [ read, execute ]
+  resources: 
+  - !variable jenkins/jenkins/db_password
+  - !variable jenkins/jenkins/db_username
 
 ...
+
+
