@@ -5,14 +5,14 @@
 # LOAD SYNTAX: conjur policy load root <file>.yml
 #-----------------------------------------------------------
 
-# Assign Jenkins Server Layer to Delegation Consumers GROUP: dev/app/db/mysql/cars/delegation/consumers
+# Assign Jenkins Server Layer to Delegation Consumers GROUP: dev/app/jenkins/users
 - !grant
-  role: !group dev/app/db/mysql/cars/delegation/consumers
+  role: !group dev/app/jenkins/users
   member: !layer dev/srv/jenkins
 
-# Assign Jenkins Server Layer to Delegation Consumers GROUP: pas_dev/app/db-mysql-cars/delegation/consumers
+# Assign Jenkins Server Layer to Delegation Consumers GROUP: pas_dev/app/jenkins/users
 - !grant
-  role: !group pas_dev/app/db-mysql-cars/delegation/consumers
+  role: !group pas_dev/app/jenkins/users
   member: !layer dev/srv/jenkins
 
 ...
