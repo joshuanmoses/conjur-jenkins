@@ -1,0 +1,33 @@
+pipeline {
+    agent any
+    stages {
+        stage ('Create Folder on local filesystem') {
+            steps {
+                sh "mkdir /container"
+            }
+        }
+        stage ('Copy Script to local filesystem') {
+            steps {
+                sh "mv loop.sh /container/loop.sh"
+            }
+       }
+       stage ('Copy artifact from Artifactory and store in /container on filesystem') {
+                steps {
+                    withCredentials([
+                    conjurSecretCredential(credentialsId: 'jenkins_artifactoryusername', variable: 'USERNAME'),
+                    conjurSecretCredential(credentialsId: 'jenkins_artifactorypassword', variable: 'PASSWORD')
+                    ]) {
+                        sh 'curl -u $USERNAME:$PASSWORD -O "http://artifactory.cyberarkdemo.com:8081/artifactory/generic-local/pass-output"'
+                    }
+                sh "mv pass-output /container/pass-output"
+                sh "chmod +x /container/pass-output"
+                sh "chmod +x /container/loop.sh"
+            }
+        }
+        stage ('Copy Dockerfile to /container on filesystem') {
+            steps {
+                sh "mv Dockerfile /container/Dockerfile"
+            }
+       }
+    }
+}
