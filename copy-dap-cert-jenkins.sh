@@ -4,7 +4,7 @@
 
 # Global Variables
 masterContainer="dap1"
-masterDNS="dap-master.cyber-ark-demo.local"
+masterDNS="dap-master.myorg.local"
 accountName="CAU"
 dockerHost2Username="user01"
 dockerHost2IP="10.0.0.20"
